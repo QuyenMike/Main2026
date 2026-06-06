@@ -1,0 +1,16 @@
+name: Build Check
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Find and compile all .cpp files
+        run: |
+          find . -name "*.cpp" | while read file; do
+            echo "Compiling $file..."
+            g++ -o /dev/null "$file"
+          done
