@@ -4,10 +4,10 @@ on: [push, pull_request]
 
 jobs:
   build:
+    name: Build Check
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - name: Find and compile all .cpp files
         run: |
           find . -name "*.cpp" | while read file; do
